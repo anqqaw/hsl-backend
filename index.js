@@ -16,28 +16,28 @@ app.post('/route', async (req, res) => {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      "digitransit-subscription-key": api
+      'digitransit-subscription-key': api
     },
-    data: {
+    data: JSON.stringify({
       query: `
-          {
-              plan(
-                  from: {lat: ${from.lat}, lon: ${from.lon}}
-                  to: {lat: ${to.lat}, lon: ${to.lon}}
-                  numItineraries: 3
-              ) {
-                  itineraries {
-                      legs {
-                          startTime
-                          endTime
-                          mode
-                          duration
-                      }
-                  }
+        {
+          plan(
+            from: {lat: ${from.lat}, lon: ${from.lon}}
+            to: {lat: ${to.lat}, lon: ${to.lon}}
+            numItineraries: 3
+          ) {
+            itineraries {
+              legs {
+                startTime
+                endTime
+                mode
+                duration
               }
+            }
           }
+        }
       `
-    }
+    })
   };
 
   try {
