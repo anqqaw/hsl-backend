@@ -1,9 +1,13 @@
 
 import express from 'express';
 import axios from 'axios';
+import cors from 'cors';
 
 const app = express();
 const api = process.env.APIKEY;
+
+
+app.use(cors());
 
 app.use(express.json());
 
