@@ -6,8 +6,12 @@ import cors from 'cors';
 const app = express();
 const api = process.env.APIKEY;
 
+const corsOptions = {
+  origin: 'http://example.com', // Replace with your frontend URL
+  optionsSuccessStatus: 200
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
